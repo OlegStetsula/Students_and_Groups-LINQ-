@@ -4,12 +4,23 @@ using System.Linq;
 
 namespace Students_Groups_LINQ_
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            
-            List<Student> students = new List<Student>()
+
+            #region Task 1
+            // Calculate multiplication of array's elements, that are greater than 0
+            int[] a = { 1, -2, 6, 0, -7, 8 };
+            double mult = MultiplyPositiveElements(a);
+            Console.WriteLine(mult);
+            #endregion
+
+            #region Task 2 
+            // You have two sets - Students(string Name, double Rating, Group group) and Groups(string Name, string Direction).
+            //Print all groups with their average rating and list of students in this group
+
+            List< Student> students = new List<Student>()
             {
                 new Student(){ Name = "Bob", Rating = 67, Group = "Lv-101"},
                 new Student(){ Name = "Adam", Rating = 73, Group = "Lv-102"},
@@ -33,13 +44,14 @@ namespace Students_Groups_LINQ_
             };
 
             var grouped = groups.GroupJoin(students, g => g.Name, s => s.Group,
-                (gs, sts) => new
-                {
-                    Name = gs.Name,
-                    AvgRating = sts.Average(n => n.Rating),
-                    Students = sts.Select(n=> n.Name)
-                }
-                );
+               (gs, sts) => new
+               {
+                   Name = gs.Name,
+                   AvgRating = sts.Average(n => n.Rating),
+                   Students = sts.Select(n => n.Name)
+               }
+               );
+
             foreach (var item in grouped)
             {
                 Console.WriteLine(@"Group {0} has {1} average rating", item.Name, item.AvgRating);
@@ -49,8 +61,17 @@ namespace Students_Groups_LINQ_
                 }
                 Console.WriteLine("-----------------------------------------");
             }
-
+            #endregion
             Console.ReadLine();
         }
+        
+        public static double MultiplyPositiveElements(int[] a)
+        {
+            double mult = a.Where(n => n > 0).DefaultIfEmpty().Aggregate((x, y) => x * y);
+            return mult;
+        }
+        
+        
+            
     }
 }
