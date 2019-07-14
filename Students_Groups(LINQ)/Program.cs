@@ -10,14 +10,15 @@ namespace Students_Groups_LINQ_
         {
 
             #region Task 1
-            // Calculate multiplication of array's elements, that are greater than 0
+            // Multiply array's elements, that are greater than 0
             int[] a = { 1, -2, 6, 0, -7, 8 };
             double mult = MultiplyPositiveElements(a);
             Console.WriteLine(mult);
             #endregion
 
             #region Task 2 
-            // You have two sets - Students(string Name, double Rating, Group group) and Groups(string Name, string Direction).
+            // You have two sets - Students(string Name, double Rating, Group group) 
+            //and Groups(string Name, string Direction).
             //Print all groups with their average rating and list of students in this group
 
             List< Student> students = new List<Student>()
@@ -43,18 +44,11 @@ namespace Students_Groups_LINQ_
                 new Group(){ Name = "Lv-103", Direction = "SET" },
             };
 
-            var grouped = groups.GroupJoin(students, g => g.Name, s => s.Group,
-               (gs, sts) => new
-               {
-                   Name = gs.Name,
-                   AvgRating = sts.Average(n => n.Rating),
-                   Students = sts.Select(n => n.Name)
-               }
-               );
+            List<GroupWithStudents> grouped = GetGroupsWithStudents(students, groups);
 
             foreach (var item in grouped)
             {
-                Console.WriteLine(@"Group {0} has {1} average rating", item.Name, item.AvgRating);
+                Console.WriteLine(@"Group {0} has average rating {1}", item.Name, item.AvgRating);
                 foreach (var s in item.Students)
                 {
                     Console.WriteLine(s);
@@ -70,8 +64,19 @@ namespace Students_Groups_LINQ_
             double mult = a.Where(n => n > 0).DefaultIfEmpty().Aggregate((x, y) => x * y);
             return mult;
         }
-        
-        
+
+        public static List<GroupWithStudents> GetGroupsWithStudents(IEnumerable<Student> students, IEnumerable<Group> groups)
+        {
+            var GroupsWithStudents = groups.GroupJoin(students, g => g.Name, s => s.Group,
+                   (gs, sts) => new GroupWithStudents
+                   {
+                       Name = gs.Name,
+                       AvgRating = sts.Average(n => n.Rating),
+                       Students = sts.Select(n => n.Name)
+                   }
+                   ).ToList();
+            return GroupsWithStudents;
+        }
             
     }
 }
