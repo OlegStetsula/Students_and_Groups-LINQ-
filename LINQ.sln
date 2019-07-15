@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Students_Groups(LINQ)", "Students_Groups(LINQ)\Students_Groups(LINQ).csproj", "{9BAB7557-D368-47DD-A63B-37AF6C34FBC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ", "Students_Groups(LINQ)\LINQ.csproj", "{9BAB7557-D368-47DD-A63B-37AF6C34FBC4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ.Tests", "LINQ.Tests\LINQ.Tests.csproj", "{6E4DD95E-1E1A-490C-AF0E-58298E362B7E}"
 EndProject

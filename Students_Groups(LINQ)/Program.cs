@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Students_Groups_LINQ_
+namespace LINQ
 {
     public class Program
     {
@@ -56,6 +56,15 @@ namespace Students_Groups_LINQ_
                 Console.WriteLine("-----------------------------------------");
             }
             #endregion
+
+            #region Task 3
+            //
+            string myString = "Я несу гусеня";
+
+            bool b = myString.IsPalindrome();
+            Console.WriteLine(b);
+             #endregion  
+
             Console.ReadLine();
         }
         
@@ -80,3 +89,4 @@ namespace Students_Groups_LINQ_
             
     }
 }
+      

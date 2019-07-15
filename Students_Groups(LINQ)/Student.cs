@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Students_Groups_LINQ_
+namespace LINQ
 {
     public class Student
     {

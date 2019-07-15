@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using Students_Groups_LINQ_;
 
 namespace LINQ.Tests
 {
@@ -15,7 +14,7 @@ namespace LINQ.Tests
         public void TestArrayWithOnlyPositiveElements(int[] a, double expected)
         {
             double actual;
-            actual = Students_Groups_LINQ_.Program.MultiplyPositiveElements(a);
+            actual = LINQ.Program.MultiplyPositiveElements(a);
             Assert.AreEqual(actual, expected);
         }
 
@@ -25,7 +24,7 @@ namespace LINQ.Tests
         public void TestArrayWithZero(int[] a, double expected)
         {
             double actual;
-            actual = Students_Groups_LINQ_.Program.MultiplyPositiveElements(a);
+            actual = LINQ.Program.MultiplyPositiveElements(a);
             Assert.AreEqual(actual, expected);
         }
 
@@ -35,7 +34,7 @@ namespace LINQ.Tests
         public void TestArrayWithNegativeElements(int[] a, double expected)
         {
             double actual;
-            actual = Students_Groups_LINQ_.Program.MultiplyPositiveElements(a);
+            actual = LINQ.Program.MultiplyPositiveElements(a);
             Assert.AreEqual(actual, expected);
         }
     }
