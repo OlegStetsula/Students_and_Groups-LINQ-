@@ -44,17 +44,17 @@ namespace LINQ
                 new Group(){ Name = "Lv-103", Direction = "SET" },
             };
 
-            List<GroupWithStudents> grouped = GetGroupsWithStudents(students, groups);
+            List<GroupWithStudents> grouped = GetGroupsWithStudentsAndAVGRating(students, groups);
 
-            foreach (var item in grouped)
-            {
-                Console.WriteLine(@"Group {0} has average rating {1}", item.Name, item.AvgRating);
-                foreach (var s in item.Students)
-                {
-                    Console.WriteLine(s);
-                }
-                Console.WriteLine("-----------------------------------------");
-            }
+            //foreach (var item in grouped)
+            //{
+            //    Console.WriteLine(@"Group {0} has average rating {1}", item.Name, item.AvgRating);
+            //    foreach (var s in item.Students)
+            //    {
+            //        Console.WriteLine(s);
+            //    }
+            //    Console.WriteLine("-----------------------------------------");
+            //}
             #endregion
 
             #region Task 3
@@ -62,7 +62,7 @@ namespace LINQ
             string myString = "Я несу гусеня";
 
             bool b = myString.IsPalindrome();
-            Console.WriteLine(b);
+            //Console.WriteLine(b);
              #endregion  
 
             Console.ReadLine();
@@ -74,14 +74,14 @@ namespace LINQ
             return mult;
         }
 
-        public static List<GroupWithStudents> GetGroupsWithStudents(IEnumerable<Student> students, IEnumerable<Group> groups)
+        public static List<GroupWithStudents> GetGroupsWithStudentsAndAVGRating(IEnumerable<Student> students, IEnumerable<Group> groups)
         {
             var GroupsWithStudents = groups.GroupJoin(students, g => g.Name, s => s.Group,
                    (gs, sts) => new GroupWithStudents
                    {
                        Name = gs.Name,
                        AvgRating = sts.Average(n => n.Rating),
-                       Students = sts.Select(n => n.Name)
+                       Students = sts.Select(n => n.Name).ToList()
                    }
                    ).ToList();
             return GroupsWithStudents;

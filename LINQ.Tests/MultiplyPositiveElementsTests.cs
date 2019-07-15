@@ -20,7 +20,7 @@ namespace LINQ.Tests
 
         [TestCase(new int[] { 1, 2, 3, 4, 0 }, 24)]
         [TestCase(new int[] { 1, 2, 0, 2, 1 }, 4)]
-        [TestCase(new int[] { 1, 1, 0, 1, 1 }, 1)]
+        [TestCase(new int[] { 0, 0, 0, 0, 0}, 1)]
         public void TestArrayWithZero(int[] a, double expected)
         {
             double actual;

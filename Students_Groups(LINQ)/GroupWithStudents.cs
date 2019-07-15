@@ -9,6 +9,6 @@ namespace LINQ
     {
         public string Name { get; set; }
         public double AvgRating { get; set; }
-        public IEnumerable<string> Students { get; set; }
+        public List<string> Students { get; set; }
     }
 }
